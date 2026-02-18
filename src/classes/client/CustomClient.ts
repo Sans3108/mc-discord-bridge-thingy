@@ -1,6 +1,7 @@
 import { ChatInputCommand, Cooldown, MessageContextCommand, UserContextCommand } from '@classes/client/Command.js';
 import { loggedCommand } from '@utils';
 import { Client, ClientOptions, ClientUser, Collection, IntentsBitField, InviteGenerationOptions } from 'discord.js';
+import type { Rcon } from 'rcon-client';
 
 export interface CustomClientOptions extends ClientOptions {
   commandErrorCooldownSeconds: number;
@@ -8,6 +9,7 @@ export interface CustomClientOptions extends ClientOptions {
   inviteGenerationOptions?: InviteGenerationOptions;
   allowUserInstalledCommands: boolean;
   allowGuildInstalledCommands: boolean;
+  rcon: Rcon;
 }
 
 export class CustomClient extends Client {
@@ -17,6 +19,7 @@ export class CustomClient extends Client {
   declare options: Omit<CustomClientOptions, 'intents'> & {
     intents: IntentsBitField;
   };
+  rcon: Rcon;
 
   constructor(clientOpts: CustomClientOptions) {
     super(clientOpts);
@@ -27,6 +30,8 @@ export class CustomClient extends Client {
 
     this.commands = new Collection<string, ChatInputCommand | MessageContextCommand | UserContextCommand>();
     this.commandCooldownMaps = new Collection<string, Collection<string, Cooldown>>();
+
+    this.rcon = clientOpts.rcon;
   }
 
   addCommand(command: ChatInputCommand | MessageContextCommand | UserContextCommand) {

@@ -4,6 +4,23 @@ import { c, handleErr, log, wrapLog } from '@log';
 log('setup', 'Logger loaded!');
 //#endregion
 
+//#region MC RCON
+import { Rcon } from 'rcon-client';
+
+let rcon = await Rcon.connect({
+  host: '127.0.0.1',
+  port: 25575,
+  password: 'yeah'
+});
+
+log('process', 'Connected to Minecraft RCON!');
+
+process.on('exit', () => {
+  log('process', 'Exiting, closing MC RCON connection...');
+  rcon.end();
+});
+//#endregion
+
 //#region Args
 import { colors } from '@common/constants.js';
 import { handleArgs } from '@scripts/handleArgs.js';
@@ -82,6 +99,7 @@ const client = new CustomClient({
   intents: [Intents.Guilds, Intents.GuildMessages, Intents.MessageContent, Intents.GuildMembers], // Not sure about this
   commandErrorCooldownSeconds: 60,
   logCommandUses: true,
+  rcon,
 
   // These should be the same as the installation contexts in the developer dashboard.
   allowGuildInstalledCommands: true,
