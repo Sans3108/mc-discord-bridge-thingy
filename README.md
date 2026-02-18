@@ -22,5 +22,4 @@ Edit this file to your liking, but keep these 2 options set up like this:
 - `functions.bot.token=TOKEN` (This wont work anyway if the other one is set to `false`)
 - `webhook.url=https://discord.com/api/webhooks/123412341234/asdasdasdasd` (Replace this with the webhook URL you copied earlier)
 
-
 Finally, start your fabric mc server, start your discord bot with `pnpm dev`, and go wild.
