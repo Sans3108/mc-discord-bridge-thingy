@@ -4,7 +4,7 @@ To set this up just fork and clone the repo, set up your discord bot token and g
 
 After finishing with your `.env` file, make sure you have node js installed (latest LTS version should work), and NPM, with npm run `npm i -g pnpm` to install PNPM (the superior package manager), and after that run `pnpm i` inside your cloned folder.
 
-Now invite your bot to your discord server, give it permissions, and set up a bridge channel, in that channel you need to create a webhook and copy it's ID - we'll use this in a bit
+Now invite your bot to your discord server, give it permissions, and set up a bridge channel, in that channel you need to create a webhook and copy it's URL - we'll use this in a bit
 
 To set up the minecraft side of this bridge system, go to your fabric server, find `server.properties` and change these:
 
