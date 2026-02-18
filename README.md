@@ -1,38 +1,26 @@
-# TypeScript-Discord-Bot
+# MC BRIDGE
 
-[![CodeQL](https://github.com/Sans3108/TypeScript-Discord-Bot/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Sans3108/TypeScript-Discord-Bot/actions/workflows/github-code-scanning/codeql)
+To set this up just clone the fork and clone the repo, set up your discord bot token and guild ID in the `.env` file (copy-paste `.env.example`) and also leave dev mode on `true`. I won't go into details how this bot works, it was made from my template and it's got just the most basic stuff to get a discord bot up and running.
 
-My go-to template for building Discord bots with TypeScript & discord.js
+After finishing with your `.env` file, make sure you have node js installed (latest LTS version should work), and NPM, with npm run `npm i -g pnpm` to install PNPM (the superior package manager), and after that run `pnpm i` inside your cloned folder.
 
-## Requirements
+Now invite your bot to your discord server, give it permissions, and set up a bridge channel, in that channel you need to create a webhook and copy it's ID - we'll use this in a bit
 
-- [NodeJS](https://nodejs.org)
-  <br> Latest LTS version is recommended.
-- [pnpm](https://pnpm.io/)
-  <br> Or otherwise your favorite package manager.
-- Some knowledge of how to run a Discord bot.
+To set up the minecraft side of this bridge system, go to your fabric server, find `server.properties` and change these:
 
-## Features
+- `enable-rcon=true`
+- `rcon.password=yeah` (This can be anything but if you want to change it (you should) change it both here and in `src/app/index.ts` line 13)
+- `rcon.port=25575` (This should be the default, but do check it)
 
-- Organized directories for commands, events, scripts etc.
-- Easy to navigate/understand code base.
-- Minimal setup required to get online.
-- Localization support already built-in usin [i18next](https://www.npmjs.com/package/i18next).
+Next, go to https://modrinth.com/plugin/dchook and download the appropiate version for your fabric server version (this mod requires the Fabric API mod as well), drop it into your server's `/mods` folder, start your server then stop it.
 
-## How to use
+You should now see a new file in the `/config` folder, called `dchook.properties`
 
-- Click on the `Use this template` button and create a new repository with your desired name.
-- Clone your brand new repository, open it in your IDE of choice and start editing.
-- When you are ready to run your bot:
-  - Copy and paste `.env.example`, rename it to `.env` and replace the values inside with your environment variables.
-  - Run `pnpm build` and `pnpm start`, and your bot should be online.
-    <br> _Instead of `pnpm` use your package manager._
+Edit this file to your liking, but keep these 2 options set up like this:
 
-## Contributing
+- `functions.bot.enabled=false` (Setting this to false forbids the plugin from running it's own discord bot, we're running our own afterall so we can customize and add more commands if we want)
+- `functions.bot.token=TOKEN` (This wont work anyway if the other one is set to `false`)
+- `webhook.url=https://discord.com/api/webhooks/123412341234/asdasdasdasd` (Replace this with the webhook URL you copied earlier)
 
-- There are no real guidelines for contributing, the only thing that must be done however, is making sure the `prettier` script is ran before opening a pull request.
 
-#### To-Do's:
-
-- [ ] Add better documentation.
-- [ ] Simplify some parts of the code and add comments.
+Finally, start your fabric mc server, start your discord bot with `pnpm dev`, and go wild.
