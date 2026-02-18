@@ -16,7 +16,7 @@ Next, go to https://modrinth.com/plugin/dchook and download the appropiate versi
 
 You should now see a new file in the `/config` folder, called `dchook.properties`
 
-Edit this file to your liking, but keep these 2 options set up like this:
+Edit this file to your liking, but setup these 3 options like this:
 
 - `functions.bot.enabled=false` (Setting this to false forbids the plugin from running it's own discord bot, we're running our own afterall so we can customize and add more commands if we want)
 - `functions.bot.token=TOKEN` (This wont work anyway if the other one is set to `false`)
