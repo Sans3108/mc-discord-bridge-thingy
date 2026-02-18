@@ -1,6 +1,6 @@
 # MC BRIDGE
 
-To set this up just clone the fork and clone the repo, set up your discord bot token and guild ID in the `.env` file (copy-paste `.env.example`) and also leave dev mode on `true`. I won't go into details how this bot works, it was made from my template and it's got just the most basic stuff to get a discord bot up and running.
+To set this up just fork and clone the repo, set up your discord bot token and guild ID in the `.env` file (copy-paste `.env.example`) and also leave dev mode on `true`. I won't go into details how this bot works, it was made from my template and it's got just the most basic stuff to get a discord bot up and running.
 
 After finishing with your `.env` file, make sure you have node js installed (latest LTS version should work), and NPM, with npm run `npm i -g pnpm` to install PNPM (the superior package manager), and after that run `pnpm i` inside your cloned folder.
 
