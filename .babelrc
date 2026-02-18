@@ -1,0 +1,51 @@
+{
+  "plugins": [
+    [
+      "babel-plugin-root-import",
+      {
+        "paths": [
+          {
+            "rootPathSuffix": "./dist/common/log.js",
+            "rootPathPrefix": "@log"
+          },
+          {
+            "rootPathSuffix": "./dist/utils/functions/index.js",
+            "rootPathPrefix": "@utils"
+          },
+          {
+            "rootPathSuffix": "./dist/app",
+            "rootPathPrefix": "@app"
+          },
+          {
+            "rootPathSuffix": "./dist/classes",
+            "rootPathPrefix": "@classes"
+          },
+          {
+            "rootPathSuffix": "./dist/common",
+            "rootPathPrefix": "@common"
+          },
+          {
+            "rootPathSuffix": "./dist/utils/scripts",
+            "rootPathPrefix": "@scripts"
+          },
+          {
+            "rootPathSuffix": "./dist/common/i18n.js",
+            "rootPathPrefix": "@i18n"
+          }
+        ]
+      }
+    ],
+    [
+      "i18next-extract",
+      {
+        "locales": ["en-US", "ro"], // add any new locales here, use discord's locale codes
+        "keyAsDefaultValue": true,
+        "tFunctionNames": ["t", "getLocalizationMap"],
+        "outputPath": "locales/{{locale}}/{{ns}}.json",
+        "nsSeparator": false,
+        "keySeparator": ".",
+        "discardOldKeys": true
+      }
+    ]
+  ]
+}
